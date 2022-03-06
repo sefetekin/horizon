@@ -1,0 +1,18 @@
+{
+    "os": "Windows-10-10.0.22000-SP0",
+    "python": "3.9.7",
+    "heartbeatAt": "2022-03-06T13:38:17.658037",
+    "startedAt": "2022-03-06T13:38:15.928896",
+    "docker": null,
+    "gpu": "NVIDIA GeForce RTX 3060",
+    "gpu_count": 1,
+    "cpu_count": 12,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "C:\\Users\\pc\\OneDrive\\Masa\u00fcst\u00fc\\classified\\horizon (1)\\Experiments\\wb.py",
+    "codePath": "wb.py",
+    "host": "DESKTOP-FQPKGTH",
+    "username": "pc",
+    "executable": "C:\\Users\\pc\\anaconda3\\python.exe"
+}

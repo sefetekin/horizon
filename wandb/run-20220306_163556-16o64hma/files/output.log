@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "C:\Users\pc\OneDrive\Masaüstü\classified\horizon (1)\Experiments\wb.py", line 9, in <module>
+    wandb.log({"loss": loss})
+NameError: name 'loss' is not defined

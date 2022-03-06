@@ -1,0 +1,83 @@
+2022-03-06 16:40:48,268 INFO    MainThread:6380 [internal.py:wandb_internal():92] W&B internal server running at pid: 6380, started at: 2022-03-06 16:40:48.267464
+2022-03-06 16:40:48,269 INFO    WriterThread:6380 [datastore.py:open_for_write():77] open: C:\Users\pc\OneDrive\Masaüstü\classified\horizon (1)\Experiments\wandb\run-20220306_164047-1mttp8yv\run-1mttp8yv.wandb
+2022-03-06 16:40:48,271 DEBUG   SenderThread:6380 [sender.py:send():235] send: header
+2022-03-06 16:40:48,271 DEBUG   SenderThread:6380 [sender.py:send():235] send: run
+2022-03-06 16:40:48,623 DEBUG   HandlerThread:6380 [handler.py:handle_request():141] handle_request: check_version
+2022-03-06 16:40:48,625 INFO    SenderThread:6380 [dir_watcher.py:__init__():169] watching files in: C:\Users\pc\OneDrive\Masaüstü\classified\horizon (1)\Experiments\wandb\run-20220306_164047-1mttp8yv\files
+2022-03-06 16:40:48,625 INFO    SenderThread:6380 [sender.py:_start_run_threads():812] run started: 1mttp8yv with start time 1646574047
+2022-03-06 16:40:48,625 DEBUG   SenderThread:6380 [sender.py:send():235] send: summary
+2022-03-06 16:40:48,626 INFO    SenderThread:6380 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-06 16:40:48,626 DEBUG   SenderThread:6380 [sender.py:send_request():249] send_request: check_version
+2022-03-06 16:40:48,825 DEBUG   HandlerThread:6380 [handler.py:handle_request():141] handle_request: run_start
+2022-03-06 16:40:48,840 DEBUG   HandlerThread:6380 [meta.py:__init__():37] meta init
+2022-03-06 16:40:48,840 DEBUG   HandlerThread:6380 [meta.py:__init__():51] meta init done
+2022-03-06 16:40:48,840 DEBUG   HandlerThread:6380 [meta.py:probe():211] probe
+2022-03-06 16:40:48,861 DEBUG   HandlerThread:6380 [git.py:repo():33] git repository is invalid
+2022-03-06 16:40:48,861 DEBUG   HandlerThread:6380 [meta.py:_save_pip():55] save pip
+2022-03-06 16:40:48,861 DEBUG   HandlerThread:6380 [meta.py:_save_pip():69] save pip done
+2022-03-06 16:40:48,861 DEBUG   HandlerThread:6380 [meta.py:_save_conda():76] save conda
+2022-03-06 16:40:49,641 INFO    Thread-11 :6380 [dir_watcher.py:_on_file_created():217] file/dir created: C:\Users\pc\OneDrive\Masaüstü\classified\horizon (1)\Experiments\wandb\run-20220306_164047-1mttp8yv\files\conda-environment.yaml
+2022-03-06 16:40:49,641 INFO    Thread-11 :6380 [dir_watcher.py:_on_file_created():217] file/dir created: C:\Users\pc\OneDrive\Masaüstü\classified\horizon (1)\Experiments\wandb\run-20220306_164047-1mttp8yv\files\requirements.txt
+2022-03-06 16:40:49,642 INFO    Thread-11 :6380 [dir_watcher.py:_on_file_created():217] file/dir created: C:\Users\pc\OneDrive\Masaüstü\classified\horizon (1)\Experiments\wandb\run-20220306_164047-1mttp8yv\files\wandb-summary.json
+2022-03-06 16:40:54,673 INFO    Thread-11 :6380 [dir_watcher.py:_on_file_created():217] file/dir created: C:\Users\pc\OneDrive\Masaüstü\classified\horizon (1)\Experiments\wandb\run-20220306_164047-1mttp8yv\files\output.log
+2022-03-06 16:40:55,495 DEBUG   HandlerThread:6380 [meta.py:_save_conda():86] save conda done
+2022-03-06 16:40:55,495 DEBUG   HandlerThread:6380 [meta.py:probe():249] probe done
+2022-03-06 16:40:55,576 DEBUG   HandlerThread:6380 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-06 16:40:55,576 DEBUG   SenderThread:6380 [sender.py:send_request():249] send_request: stop_status
+2022-03-06 16:40:55,578 INFO    HandlerThread:6380 [handler.py:handle_tbrecord():687] handling tbrecord: tbrecord {
+  log_dir: "sheet2/googlenet"
+  save: true
+}
+
+2022-03-06 16:40:55,578 DEBUG   HandlerThread:6380 [config_util.py:dict_from_config_file():102] no default config file found in config-defaults.yaml
+2022-03-06 16:40:55,641 DEBUG   Thread-16 :6380 [tb_watcher.py:_process_events():270] Encountered tensorboard directory watcher error: [WinError 1314] A required privilege is not held by the client: 'C:\\Users\\pc\\OneDrive\\Masaüstü\\classified\\horizon (1)\\Experiments\\sheet2\\googlenet\\events.out.tfevents.1646574053.DESKTOP-FQPKGTH.21200.0' -> 'C:\\Users\\pc\\OneDrive\\Masaüstü\\classified\\horizon (1)\\Experiments\\wandb\\run-20220306_164047-1mttp8yv\\files\\events.out.tfevents.1646574053.DESKTOP-FQPKGTH.21200.0'
+2022-03-06 16:40:55,677 INFO    Thread-11 :6380 [dir_watcher.py:_on_file_modified():230] file/dir modified: C:\Users\pc\OneDrive\Masaüstü\classified\horizon (1)\Experiments\wandb\run-20220306_164047-1mttp8yv\files\conda-environment.yaml
+2022-03-06 16:40:55,677 INFO    Thread-11 :6380 [dir_watcher.py:_on_file_created():217] file/dir created: C:\Users\pc\OneDrive\Masaüstü\classified\horizon (1)\Experiments\wandb\run-20220306_164047-1mttp8yv\files\wandb-metadata.json
+2022-03-06 16:40:55,844 DEBUG   SenderThread:6380 [sender.py:send():235] send: telemetry
+2022-03-06 16:40:55,844 DEBUG   SenderThread:6380 [sender.py:send():235] send: tbrecord
+2022-03-06 16:40:55,844 DEBUG   SenderThread:6380 [sender.py:send():235] send: files
+2022-03-06 16:40:55,844 INFO    SenderThread:6380 [sender.py:_save_file():947] saving file wandb-metadata.json with policy now
+2022-03-06 16:40:56,668 INFO    Thread-17 :6380 [upload_job.py:push():137] Uploaded file C:\Users\pc\AppData\Local\Temp\tmpe2q6i78bwandb\21tgsnq0-wandb-metadata.json
+2022-03-06 16:41:10,852 DEBUG   HandlerThread:6380 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-06 16:41:10,852 DEBUG   SenderThread:6380 [sender.py:send_request():249] send_request: stop_status
+2022-03-06 16:41:19,887 INFO    Thread-11 :6380 [dir_watcher.py:_on_file_modified():230] file/dir modified: C:\Users\pc\OneDrive\Masaüstü\classified\horizon (1)\Experiments\wandb\run-20220306_164047-1mttp8yv\files\config.yaml
+2022-03-06 16:41:20,192 DEBUG   SenderThread:6380 [sender.py:send():235] send: stats
+2022-03-06 16:41:26,141 DEBUG   HandlerThread:6380 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-06 16:41:26,141 DEBUG   SenderThread:6380 [sender.py:send_request():249] send_request: stop_status
+2022-03-06 16:41:41,423 DEBUG   HandlerThread:6380 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-06 16:41:41,423 DEBUG   SenderThread:6380 [sender.py:send_request():249] send_request: stop_status
+2022-03-06 16:41:53,944 DEBUG   SenderThread:6380 [sender.py:send():235] send: stats
+2022-03-06 16:41:56,704 DEBUG   HandlerThread:6380 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-06 16:41:56,704 DEBUG   SenderThread:6380 [sender.py:send_request():249] send_request: stop_status
+2022-03-06 16:42:11,979 DEBUG   HandlerThread:6380 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-06 16:42:11,979 DEBUG   SenderThread:6380 [sender.py:send_request():249] send_request: stop_status
+2022-03-06 16:42:27,257 DEBUG   HandlerThread:6380 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-06 16:42:27,257 DEBUG   SenderThread:6380 [sender.py:send_request():249] send_request: stop_status
+2022-03-06 16:42:27,750 DEBUG   SenderThread:6380 [sender.py:send():235] send: stats
+2022-03-06 16:42:42,548 DEBUG   HandlerThread:6380 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-06 16:42:42,548 DEBUG   SenderThread:6380 [sender.py:send_request():249] send_request: stop_status
+2022-03-06 16:42:57,824 DEBUG   HandlerThread:6380 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-06 16:42:57,824 DEBUG   SenderThread:6380 [sender.py:send_request():249] send_request: stop_status
+2022-03-06 16:43:01,603 DEBUG   SenderThread:6380 [sender.py:send():235] send: stats
+2022-03-06 16:43:13,097 DEBUG   HandlerThread:6380 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-06 16:43:13,097 DEBUG   SenderThread:6380 [sender.py:send_request():249] send_request: stop_status
+2022-03-06 16:43:28,382 DEBUG   HandlerThread:6380 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-06 16:43:28,382 DEBUG   SenderThread:6380 [sender.py:send_request():249] send_request: stop_status
+2022-03-06 16:43:35,401 DEBUG   SenderThread:6380 [sender.py:send():235] send: stats
+2022-03-06 16:43:43,665 DEBUG   HandlerThread:6380 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-06 16:43:43,665 DEBUG   SenderThread:6380 [sender.py:send_request():249] send_request: stop_status
+2022-03-06 16:43:58,943 DEBUG   HandlerThread:6380 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-06 16:43:58,943 DEBUG   SenderThread:6380 [sender.py:send_request():249] send_request: stop_status
+2022-03-06 16:44:09,239 DEBUG   SenderThread:6380 [sender.py:send():235] send: stats
+2022-03-06 16:44:14,234 DEBUG   HandlerThread:6380 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-06 16:44:14,234 DEBUG   SenderThread:6380 [sender.py:send_request():249] send_request: stop_status
+2022-03-06 16:44:29,511 DEBUG   HandlerThread:6380 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-06 16:44:29,511 DEBUG   SenderThread:6380 [sender.py:send_request():249] send_request: stop_status
+2022-03-06 16:44:43,054 DEBUG   SenderThread:6380 [sender.py:send():235] send: stats
+2022-03-06 16:44:44,791 DEBUG   HandlerThread:6380 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-06 16:44:44,791 DEBUG   SenderThread:6380 [sender.py:send_request():249] send_request: stop_status
+2022-03-06 16:45:00,137 DEBUG   HandlerThread:6380 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-06 16:45:00,137 DEBUG   SenderThread:6380 [sender.py:send_request():249] send_request: stop_status
+2022-03-06 16:45:15,422 DEBUG   HandlerThread:6380 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-06 16:45:15,422 DEBUG   SenderThread:6380 [sender.py:send_request():249] send_request: stop_status
+2022-03-06 16:45:16,906 DEBUG   SenderThread:6380 [sender.py:send():235] send: stats
