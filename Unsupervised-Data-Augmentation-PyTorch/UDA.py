@@ -28,7 +28,7 @@ args = parser.parse_args()
 best_prec1 = 0
 device = args.device
 
-writer =  SummaryWriter('1000, 3,9')
+writer =  SummaryWriter('runs/test')
 
 def save_checkpoint(state, filename='checkpoint.pth.tar'):
     """
@@ -98,8 +98,9 @@ def uda_train(train_labelled, train_unlabelled, train_unlabelled_aug, model, cri
             label_iter = iter(train_labelled)
             x, y = next(label_iter)
 
-        x = x.cuda()
-        y = y.cuda()
+        if torch.cuda.is_available() == True:
+            x = x.cuda()
+            y = y.cuda()
 
         y_pred = model(x)
 
@@ -107,8 +108,9 @@ def uda_train(train_labelled, train_unlabelled, train_unlabelled_aug, model, cri
 
         # UNSUPERVISED
         unlabel_x, _ = next(unsup_iter)
-        unlabel_x = unlabel_x.cuda()
-        unlabel_aug_x = unlabel_aug_x.cuda()
+        if torch.cuda.is_available() == True:
+            unlabel_x = unlabel_x.cuda()
+            unlabel_aug_x = unlabel_aug_x.cuda()
 
         unsup_y_pred = model(unlabel_x).detach()
         unsup_y_probas = torch.softmax(unsup_y_pred, dim=-1)
@@ -119,7 +121,11 @@ def uda_train(train_labelled, train_unlabelled, train_unlabelled_aug, model, cri
         unsup_loss = consistency_criterion(unsup_aug_y_probas, unsup_y_probas)
 
         final_loss = sup_loss + lam * unsup_loss
-
+        iteration = len(train_unlabelled_aug)*epoch + i
+        writer.add_scalar('training final loss', final_loss, iteration)
+        writer.add_scalar('training supervised loss', sup_loss, iteration)
+        writer.add_scalar('training unsupervised loss', unsup_loss, iteration)        
+        
         optimizer.zero_grad()
         final_loss.backward()
         optimizer.step()
@@ -152,9 +158,10 @@ def uda_validate(valid_loader, unlabelled_loader, model, criterion, epoch):
 
     with torch.no_grad():
         for i, (input, target) in enumerate(valid_loader):
-            target = target.cuda()
-            input_var = input.cuda()
-            target_var = target.cuda()
+            if torch.cuda.is_available() == True:
+                target = target.cuda()
+                input_var = input.cuda()
+                target_var = target.cuda()
 
             # compute output
             output = model(input_var)
@@ -196,16 +203,20 @@ def run_unsupervised():
     # load model
     model = networks.fastresnet()
     model.classifier[2] = torch.nn.Linear(in_features=512, out_features=3, bias=False)
-    model.cuda()
+    if torch.cuda.is_available() == True:
+        model.cuda()
     
     # data loaders
-
     train_labelled, train_unlabelled, train_unlabelled_aug, test = dataset.cifar10_unsupervised_dataloaders()
     
     # criterion and optimizer
-    criterion = nn.CrossEntropyLoss().cuda()
-    consistency_criterion = nn.KLDivLoss(reduction='batchmean').cuda()
-
+    if torch.cuda.is_available() == True:
+        criterion = nn.CrossEntropyLoss().cuda()
+        consistency_criterion = nn.KLDivLoss(reduction='batchmean').cuda()
+    else:
+        criterion = nn.CrossEntropyLoss()
+        consistency_criterion = nn.KLDivLoss(reduction='batchmean')
+        
     optimizer = torch.optim.SGD(model.parameters(),
                                 lr=0.1,
                                 momentum=0.9,

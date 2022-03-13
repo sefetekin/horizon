@@ -59,7 +59,7 @@ def cifar10_unsupervised_dataloaders():
     train_unlabelled_aug_ds_t = AddTransform(train_unlabelled_ds, unsupervised_train_transformation)
 
     print('Labelled dataset -- Num_samples: {0}, classes: {1}, \n Unsupervised dataset -- Num_samples {2}, Augmentation -- Num_samples: {3}'
-          .format(len(train_labelled_ds_t), 10, len(train_unlabelled_ds_t), len(train_unlabelled_aug_ds_t)))
+          .format(len(train_labelled_ds_t), 3, len(train_unlabelled_ds_t), len(train_unlabelled_aug_ds_t)))
 
     # Data loader for labeled and unlabeled train dataset
     train_labelled = DataLoader(
