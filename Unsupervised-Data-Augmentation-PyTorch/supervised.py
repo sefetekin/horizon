@@ -75,6 +75,13 @@ def accuracy(output, target, topk=(1,)):
         res.append(correct_k.mul_(100.0 / batch_size))
     return res
 
+def f1score(output, target):
+        precision, recall, f1, support = precision_recall_fscore_support(target.to('cpu'),
+                                                                         torch.argmax(output.to('cpu'), dim=1),
+                                                                         zero_division=0,
+                                                                         labels=(0,1,2))
+        import pdb; pdb.set_trace()
+
 def train(train_loader, model, criterion, optimizer, epoch):
     """
         Run one train epoch
@@ -111,6 +118,8 @@ def train(train_loader, model, criterion, optimizer, epoch):
 
         # measure accuracy and record loss
         prec1 = accuracy(output.data, target)[0]
+        f1 = f1score(output.data, target)
+        import pdb; pdb.set_trace()
         losses.update(loss.item(), input.size(0))
         top1.update(prec1.item(), input.size(0))
 

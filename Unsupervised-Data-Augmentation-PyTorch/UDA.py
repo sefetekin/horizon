@@ -68,6 +68,14 @@ def accuracy(output, target, topk=(1,)):
         res.append(correct_k.mul_(100.0 / batch_size))
     return res
 
+def f1score(output, target):
+        precision, recall, f1, support = precision_recall_fscore_support(target.to('cpu'),
+                                                                         torch.argmax(output.to('cpu'), dim=1),
+                                                                         zero_division=0,
+                                                                         labels=(0,1,2))
+        import pdb; pdb.set_trace()
+    
+
 def uda_train(train_labelled, train_unlabelled, train_unlabelled_aug, model, criterion, consistency_criterion, optimizer, epoch):
     """
         Run one train epoch
@@ -98,8 +106,9 @@ def uda_train(train_labelled, train_unlabelled, train_unlabelled_aug, model, cri
             label_iter = iter(train_labelled)
             x, y = next(label_iter)
 
-        x = x.cuda()
-        y = y.cuda()
+        if torch.cuda.is_available() == True:
+            x = x.cuda()
+            y = y.cuda()
 
         y_pred = model(x)
 
@@ -107,8 +116,9 @@ def uda_train(train_labelled, train_unlabelled, train_unlabelled_aug, model, cri
 
         # UNSUPERVISED
         unlabel_x, _ = next(unsup_iter)
-        unlabel_x = unlabel_x.cuda()
-        unlabel_aug_x = unlabel_aug_x.cuda()
+        if torch.cuda.is_available() == True:
+            unlabel_x = unlabel_x.cuda()
+            unlabel_aug_x = unlabel_aug_x.cuda()
 
         unsup_y_pred = model(unlabel_x).detach()
         unsup_y_probas = torch.softmax(unsup_y_pred, dim=-1)
@@ -152,9 +162,10 @@ def uda_validate(valid_loader, unlabelled_loader, model, criterion, epoch):
 
     with torch.no_grad():
         for i, (input, target) in enumerate(valid_loader):
-            target = target.cuda()
-            input_var = input.cuda()
-            target_var = target.cuda()
+            if torch.cuda.is_available() == True:
+                target = target.cuda()
+                input_var = input.cuda()
+                target_var = target.cuda()
 
             # compute output
             output = model(input_var)
@@ -165,6 +176,7 @@ def uda_validate(valid_loader, unlabelled_loader, model, criterion, epoch):
 
             # measure accuracy and record loss
             prec1 = accuracy(output.data, target)[0]
+            f1 = f1score(output.data, target)            
             losses.update(loss.item(), input.size(0))
             top1.update(prec1.item(), input.size(0))
 
@@ -196,15 +208,20 @@ def run_unsupervised():
     # load model
     #model = networks.fastresnet()
     model = networks.googlenet()
-    model.cuda()
+    if torch.cuda.is_available() == True:
+        model.cuda()
     
     # data loaders
 
     train_labelled, train_unlabelled, train_unlabelled_aug, test = dataset.cifar10_unsupervised_dataloaders()
     
     # criterion and optimizer
-    criterion = nn.CrossEntropyLoss().cuda()
-    consistency_criterion = nn.KLDivLoss(reduction='batchmean').cuda()
+    criterion = nn.CrossEntropyLoss()
+    consistency_criterion = nn.KLDivLoss(reduction='batchmean')
+    
+    if torch.cuda.is_available() == True:
+        criterion = criterion.cuda()
+        consistency_criterion = consistency_criterion.cuda()
 
     optimizer = torch.optim.SGD(model.parameters(),
                                 lr=0.1,
