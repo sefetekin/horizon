@@ -66,7 +66,7 @@ def cifar10_unsupervised_dataloaders():
         train_labelled_ds_t,
         batch_size=64,
         shuffle=False,
-        num_workers=8,
+        num_workers=0,
         pin_memory=True
     )
 
@@ -74,7 +74,7 @@ def cifar10_unsupervised_dataloaders():
         train_unlabelled_ds_t,
         batch_size=64,
         shuffle=False,
-        num_workers=8,
+        num_workers=0,
         pin_memory=True
     )
 
@@ -82,7 +82,7 @@ def cifar10_unsupervised_dataloaders():
        train_unlabelled_aug_ds_t,
         batch_size=64,
         shuffle=False,
-        num_workers=8,
+        num_workers=0,
         pin_memory=True
     )
 
@@ -95,7 +95,7 @@ def cifar10_unsupervised_dataloaders():
     test = DataLoader(
         cifar10_test_ds, batch_size=64,
         shuffle=False,
-        num_workers=8,
+        num_workers=0,
         pin_memory=True
     )
 
@@ -126,7 +126,7 @@ def cifar10_supervised_dataloaders(limit = 0):
         train_ds,
         batch_size=64,
         shuffle=True,
-        num_workers=8,
+        num_workers=0,
         pin_memory=True
     )
 
@@ -138,10 +138,10 @@ def cifar10_supervised_dataloaders(limit = 0):
             ToTensor(),
             Normalize(mean=[0.485, 0.456, 0.406],
                                  std=[0.229, 0.224, 0.225]),
-        ]), download=True),
+        ]), download=False),
         batch_size=64,
         shuffle=False,
-        num_workers=8,
+        num_workers=0,
         pin_memory=True
     )
 
