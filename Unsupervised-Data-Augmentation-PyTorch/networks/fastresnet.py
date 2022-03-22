@@ -6,8 +6,9 @@ import torch.nn as nn
 
 
 def fastresnet():
-    return FastResnet()
-
+    model = FastResnet()
+    model.classifier[2] = torch.nn.Linear(in_features=512, out_features=3, bias=False)
+    return(model)
 
 def batch_norm(num_channels, bn_bias_init=None, bn_bias_freeze=False,
                bn_weight_init=None, bn_weight_freeze=False):

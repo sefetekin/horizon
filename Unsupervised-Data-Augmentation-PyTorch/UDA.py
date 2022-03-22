@@ -28,7 +28,7 @@ args = parser.parse_args()
 best_prec1 = 0
 device = args.device
 
-writer =  SummaryWriter('runs/test2')
+writer =  SummaryWriter('runs/test_parsa')
 
 def save_checkpoint(state, filename='checkpoint.pth.tar'):
     """
@@ -194,8 +194,8 @@ def run_unsupervised():
         os.makedirs(args.save_dir)
 
     # load model
-    model = networks.fastresnet()
-    model.classifier[2] = torch.nn.Linear(in_features=512, out_features=3, bias=False)
+    #model = networks.fastresnet()
+    model = networks.googlenet()
     model.cuda()
     
     # data loaders
