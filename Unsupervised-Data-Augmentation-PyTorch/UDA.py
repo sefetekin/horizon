@@ -6,7 +6,7 @@ import argparse
 import torch
 from torch import nn
 from torch.backends import cudnn
-
+from sklearn.metrics import precision_recall_fscore_support
 from torch.utils.tensorboard import SummaryWriter
 
 import dataset as dataset
@@ -28,7 +28,7 @@ args = parser.parse_args()
 best_prec1 = 0
 device = args.device
 
-writer =  SummaryWriter('runs/test_parsa')
+writer =  SummaryWriter('runs/test4')
 
 def save_checkpoint(state, filename='checkpoint.pth.tar'):
     """
@@ -73,8 +73,7 @@ def f1score(output, target):
                                                                          torch.argmax(output.to('cpu'), dim=1),
                                                                          zero_division=0,
                                                                          labels=(0,1,2))
-        import pdb; pdb.set_trace()
-    
+        
 
 def uda_train(train_labelled, train_unlabelled, train_unlabelled_aug, model, criterion, consistency_criterion, optimizer, epoch):
     """

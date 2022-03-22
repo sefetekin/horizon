@@ -6,7 +6,7 @@ import argparse
 import torch
 from torch import nn
 from torch.backends import cudnn
-
+from sklearn.metrics import precision_recall_fscore_support
 from torch.utils.tensorboard import SummaryWriter
 
 import dataset as dataset
@@ -80,8 +80,7 @@ def f1score(output, target):
                                                                          torch.argmax(output.to('cpu'), dim=1),
                                                                          zero_division=0,
                                                                          labels=(0,1,2))
-        import pdb; pdb.set_trace()
-
+       
 def train(train_loader, model, criterion, optimizer, epoch):
     """
         Run one train epoch

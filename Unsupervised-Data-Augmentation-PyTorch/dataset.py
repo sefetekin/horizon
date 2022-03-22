@@ -4,7 +4,7 @@ from torch.utils.data import DataLoader, Subset, Dataset, ConcatDataset
 from torchvision import datasets
 from torchvision.transforms import Compose, ToTensor, Normalize, Pad, RandomCrop, RandomHorizontalFlip, RandomErasing
 from RandAugment import RandAugment
-
+from sklearn.metrics import precision_recall_fscore_support
 
 np.random.seed(2)
 
